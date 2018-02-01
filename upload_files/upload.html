@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File Upload Example in AngularJS</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  <script src="upload.js"></script>
+</head>
+
+<body ng-app="fupApp">
+
+    <div ng-controller="fupController">
+        <input type="file" id="file" name="file" multiple
+            onchange="angular.element(this).scope().getFileDetails(this)" />
+
+        <input type="button" ng-click="uploadFiles()" value="Upload" />
+
+        <!--ADD A PROGRESS BAR ELEMENT.-->
+        <p><progress id="pro" value="0"></progress></p>
+    </div>
+
+</body>
