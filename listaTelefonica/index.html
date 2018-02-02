@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" ng-app="listaTelefonica">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Diretivas</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+
+    <!-- My Css -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Script-->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-locale_pt-pt.js"></script>
+    <script src="lib/angular/angular-messages.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/listaTelefonicaCtrl.js"></script>
+    <script src="js/services/contatosAPIService.js"></script>
+
+</head>
+
+<body ng-controller="listaTelefonicaCtrl">
+
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">{{app}}</a>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="container">
+                    <!-- Add contato -->
+                    <div class="form-contato">
+                        <h4>Novo Contato...</h4>
+
+                        <form name="contatoForm">
+                            <!-- input nome -->
+                            <input class="form-control" type="text" name="nome" placeholder="Nome" ng-model="contato.nome" ng-required="true" ng-minlength="10">
+
+                            <div ng-show="contatoForm.nome.$dirty" ng-messages="contatoForm.nome.$error" class="alert alert-danger">
+                                <div ng-message="required">
+                                    Por favor, preencha o nome!
+                                </div>
+                                <div ng-message="minlength">
+                                    O campo nome deve ter no mínimo 10 carateres!
+                                </div>
+                            </div>
+
+
+                            <!-- input telefone -->
+                            <input class="form-control" type="text" name="telefone" placeholder="Telefone" ng-model="contato.telefone" ng-required="true"
+                                ng-pattern="/^[9][1,2,3,6]\d{7}$|^[2]\d{8}$/">
+
+                            <div class="alert alert-danger" ng-show="contatoForm.telefone.$error.required && contatoForm.telefone.$dirty">
+                                Por favor, preencha o telefone!
+                            </div>
+
+                            <div class="alert alert-danger" ng-show="contatoForm.telefone.$error.pattern">
+                                O número de telefone deve conter 9 dígitos.
+                            </div>
+
+
+                            <!-- input Operadora -->
+                            <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome  + ' ( ' + (operadora.preco | currency) + ' ) ' 
+                        group by operadora.categoria 
+                        for operadora in operadoras | orderBy:'nome'">
+                                <option value="">Selecione uma operadora</option>
+                            </select>
+                        </form>
+
+                        <button class="btn btn-primary btn-block" ng-click="addContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar Contato</button>
+                        <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="isContatoSelecionado(contatos)">Apagar Contatos</button>
+                    </div>
+                </div>
+            </div>
+            <!-- End add contato -->
+
+            <!-- Tabela de contatos-->
+            <article class="col-md-8">
+                <div class="container">
+                    <input class="form-control pesquisa-tabela " type="text" name="" id="" placeholder="Pesquisa..." ng-model="criterioDeBusca.nome">
+
+                    <table class="table table-dark text-center" ng-show="contatos.length > 0">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">
+                                    <a href="" ng-click="ordernarPor('nome')">Nome</a>
+                                </th>
+                                <th scope="col">
+                                    <a href="" ng-click="ordernarPor('telefone')">Telefone</a>
+                                </th>
+                                <th scope="col">
+                                    <a href="" ng-click="ordernarPor('operadora')">Operadora</a>
+                                </th>
+                                <th scope="col">
+                                    <a href="" ng-click="ordernarPor('data')">Data</a>
+                                </th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-class="{'selecionado': contato.selecionado}" scope="row" ng-repeat="contato in contatos | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">
+                                <td>
+                                    <input type="checkbox" ng-model="contato.selecionado" />
+                                </td>
+                                <td class="text-capitalize">{{contato.nome | lowercase}}</td>
+                                <td>{{contato.telefone}}</td>
+                                <td>{{contato.operadora.nome}}</td>
+                                <td>{{contato.data | date:'fullDate'}}</td>
+                                <td>
+                                    <div style="width:20px; height: 20px;" ng-style="{'background-color':contato.cor}"> </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+            <!-- End Tabela -->
+        </div>
+
+    </div>
+
+    <div ng-include="'footer.html'"></div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN "
+        crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q "
+        crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl "
+        crossorigin="anonymous "></script>
+</body>
+
+</html>

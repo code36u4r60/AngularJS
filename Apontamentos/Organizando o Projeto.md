@@ -79,4 +79,39 @@ app/
     
     index.html
 ```
+- Projetos médios 
+- Muitos componentes
+- Número de linhas em cada arquivo já começa a incomodar
+- Domínio relativamente extenso
+
+## Domain Style
+> Agrupando os arquivos por domínio
+
+```
+app/
+    app/
+        app.css
+        app.js
+    
+    login/
+        login.css
+        login.html
+        loginCtrl.js
+        login.Service.js
+
+    lista/
+        lista.css
+        lista.html
+        listaCtrl.js
+        listaService.js
+
+    shared/
+        panelDirective.js
+        tableDirective.js
+
+    lib/
+        angular.js
+    
+    index.html
+```
 
