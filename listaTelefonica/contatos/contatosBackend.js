@@ -4,8 +4,7 @@ var app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(express.bodyParser());
 
-
-$scope.contatos = [
+var contatos = [
   {
     nome: "pedro",
     telefone: "912345678",
@@ -63,7 +62,7 @@ $scope.contatos = [
   }
 ];
 
-$scope.operadoras = [
+ var operadoras = [
   { nome: 'Meo', codigo: '96', categoria: "Movel", preco: 2 },
   { nome: 'Vodafone', codigo: '91', categoria: "Movel", preco: 1 },
   { nome: 'Nos', codigo: '93', categoria: "Movel", preco: 1.5 },
