@@ -1,0 +1,102 @@
+
+## AngularJS Fundamentals
+
+In this course, you will learn how simple it is to use Angular to create maintainable and testable single page applications. You will learn how to: bootstrap your Angular application; use AngularJS markup and expressions; create and use controllers; use built-in services and create custom services; turn your application into a SPA using routing; and create your own custom elements and handle events using directives. You will also learn how AngularJS allows you to do all thing using test-driven-development.
+
+### Table of contents
+- Course Overview
+    - ...
+- Introduction to Angular
+    - ...
+- Angular Controllers & Markup
+    - Introduction
+    - Demo: Creating the Node Server
+    - Angular Controllers & Scope
+    - Demo: Controllers
+    - Demo: Displaying Repeating Information
+    - Demo Handling Events
+    - Built-in Directives
+    - Event Directives
+    - Other Directives - Part 1
+    - Other Directives - Part 2
+    - IE Restrictions with Angular
+    - Expressions
+    - Filters
+    - Built-in Filters
+    - Writing Custom Filters
+    - Two Way Binding
+    - Demo: Two Way Binding
+    - Validation
+    - Summary
+- Creating and Using Angular Services
+    - Introduction to Angular Services
+    - Creating Your First Custom Service
+    - Another Custom Service Example
+    - Introduction to Built-In Angular Services
+    - Using Angular's $http Service
+    - Updating a Node Server for JSON Requests
+    - Updating an IIS Server for JSON Requests
+    - Using $http Promises
+    - Using Angular's $resource Service
+    - Saving Data with $resource
+    - Using Angular's $anchorScroll Service
+    - Using Angular's $cacheFactory Service
+    - Using Angular's $compile Service
+    - Using Angular's $parse Service
+    - Using Angular's $locale Service
+    - Using Angular's $timeout Service
+    - Using Angular's $exceptionHandler Service
+    - Using Angular's $filter Service
+    - Using Angular's $cookieStore Service
+    - Overview of Less Common Angular Services
+    - Suggested Exercises
+- Angular Routing
+    - Introduction to Angular Routing
+    - Websites of Yore
+    - Single Page Applications
+    - Adding Your First Angular Route
+    - More Routing and Browser History
+    - Creating a Default Route
+    - Accessing Parameters from the Route
+    - Using Angular's $route Service
+    - Enabling HTML5 Routing
+    - Template and Resolve Properties
+    - Using Angular's $location Service
+    - Summary
+    - Suggested Exercises
+- Creating Custom Angular Directives
+    - Introduction to Angular Directives
+    - Creating Your First Angular Directive
+    - Domain Specific Language via Custom Elements
+    - Isolating Directive Scope
+    - Exploring Isolate Scope Bindings
+    - Handling Events with Directives 
+    - Observing and Responding to Changes
+    - Using Controllers within Directives
+    - Sharing Directive Controllers via Require
+    - Directive Priority and using Terminal
+    - Using Require with Nested Directives
+    - Understanding Transclusion
+    - Using Compile to Transform the DOM
+    - Making jQuery More Explicit with Directives
+    - Summary
+- Testing Angular
+    - Introduction
+    - Installing Karma
+    - Karma with Webstorm
+    - Testing Controllers in Angular
+    - Testing Controllers in Angular Part 2
+    - Testing Services in Angular
+    - Testing Services with Dependencies
+    - Testing AJAX Services in Angular
+    - Testing AJAX Services in Angular Part 2
+    - Testing Filters in Angular
+    - Testing Directives - Overview
+    - Setting up Karma for testing Directives
+    - Testing Directives in Angular
+    - End to End testing - Overview
+    - Setting up Protractor
+    - Setting up Protractor with Webstorm
+    - Angular End to End testing - Part 1
+    - Angular End to End testing - Part 2
+    - Summary
