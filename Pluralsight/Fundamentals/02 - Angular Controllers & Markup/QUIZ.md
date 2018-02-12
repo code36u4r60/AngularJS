@@ -15,3 +15,11 @@
 ### 5 - Can the view bind to functions on the scope? (A _view_ pode ser vinculada a funções no _scope_?)
 > Sim
 
+### 6 - Can you use basic JavaScript objects as your model in Angular?
+> Sim
+
+### 7 - What is the markup indicator for binding data to a view? 
+> Double Curly Brace - Chaveta dupla
+
+### 8 - Which directive do you use to bind an image's src?
+> ng-src
