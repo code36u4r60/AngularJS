@@ -15,7 +15,12 @@
         <div class="navbar">
             <div class="navbar-inner">
                 <ul class="nav">
-
+                    <li>
+                        <a href="EventDetails.html">Event Details</a>
+                    </li>
+                    <li>
+                        <a href="NewEvent.html">Create Event</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -26,7 +31,7 @@
             <div class="row">
                 <img ng-src="{{event.imageUrl}}" alt="{{event.name}}" />
                 <div class="span11">
-                    <h2>{{event.name}}</h2>
+                    <h2>{{event.name | uppercase}}</h2>
                 </div>
             </div>
             <!-- End row -->
@@ -52,8 +57,21 @@
             <hr>
 
             <h3>Sessions</h3>
+            Order by:
+            <select ng-model="sortorder" class="input-small">
+                <option selected value="name">Name</option>
+                <option value="-upVoteCount">Votes</option>
+            </select>
+
+            Show:
+            <select ng-model="query.level" class="input-medium">
+                <option selected value="">All</option>
+                <option selected value="introductory">Introductory</option>
+                <option selected value="intermediate">Intermediate</option>
+                <option selected value="advanced">Advanced</option>
+            </select>
             <ul class="thumbnails">
-                <li ng-repeat="session in event.sessions">
+                <li ng-repeat="session in event.sessions | orderBy:sortorder | filter:query  | limitTo:5 ">
                     <div class="row session">
 
                         <div class="span0 well votingWidget">
@@ -71,7 +89,7 @@
                         <div class="well span9">
                             <h4 class="well-title">{{session.name}}</h4>
                             <h6 style="margin-top: -10px">{{session.creatorName}}</h6>
-                            <span>Duration: {{session.duration}}</span>
+                            <span>Duration: {{session.duration | durations}}</spa>
                             <br>
                             <span>Level: {{session.level}}</span>
 
@@ -85,12 +103,15 @@
     </div>
     <!-- Script's -->
     <script src="lib/jquery.min.js"></script>
-    <script src="lib/underscore-1.4.4.min.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
     <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-resource.js"></script>
+    <script src="lib/underscore-1.4.4.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/controllers/EditEventController.js"></script>
     <script src="js/controllers/EventController.js"></script>
-
+    <script src="js/services/EventData.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
 </body>
 
 </html>
